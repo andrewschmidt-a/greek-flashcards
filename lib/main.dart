@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:csv/csv.dart';
+import 'package:http/http.dart';
 import 'package:flutter/services.dart' show rootBundle;
 //import 'package:page_transition/page_transition.dart';
 
@@ -150,9 +151,9 @@ class _DefaultPageState extends State<DefaultPage> {
   loadAsset(filename) async {
     print('Loading');
     List<List<dynamic>> data = [];
-    final String myData = await rootBundle.loadString("assets/"+filename+".csv");
+    Response res = await get("http://greek.nemcrunchers.dev/.netlify/functions/content");;
     print('Converting');
-    List<List<dynamic>> csvTable = CsvToListConverter().convert(myData);
+    List<List<dynamic>> csvTable = jsonDecode(res.body)[filename];
     print('Starting');
 
     data = csvTable;
