@@ -21,29 +21,6 @@ void main() {
 class StudyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-//    void choiceAction(String choice) {
-//      if (choice == Constants.Import) {
-//        print('Import');
-//        loadAsset();
-//        Navigator.push(
-//          context,
-//          PageTransition(
-//            type: PageTransitionType.fade,
-//            child: FlashScreen(),
-//          ),
-//        );
-//      } else if (choice == Constants.Restart) {
-//        {
-//          Navigator.pushReplacement(
-//            context,
-//            PageRouteBuilder(
-//              pageBuilder: (_, __, ___) => FlashCardPage(),
-//              transitionDuration: Duration.zero,
-//            ),
-//          );
-//        }
-//      }
-//    }
 
     return MaterialApp(
       title: 'Greek Flashcardss',
@@ -53,20 +30,6 @@ class StudyApp extends StatelessWidget {
         'defaultpage': (BuildContext context) => new DefaultPage(),
         'flashscreen': (BuildContext context) => new FlashScreen()
       },
-
-//          actions: <Widget>[
-//            PopupMenuButton<String>(
-//              onSelected: choiceAction,
-//              itemBuilder: (BuildContext context) {
-//                return Constants.choices.map((String choice) {
-//                  return PopupMenuItem<String>(
-//                    value: choice,
-//                    child: Text(choice),
-//                  );
-//                }).toList();
-//              },
-//            )
-//          ],
     );
   }
 }
@@ -82,6 +45,9 @@ class _FlashScreenState extends State<FlashScreen> {
   int totalQuestions = quizBrain.getQuestionBankLength();
   String questionText = quizBrain.getQuestionText();
   String questionAnswer = quizBrain.getQuestionAnswer();
+  VoidCallback listener  = (){
+
+  };
 
   String progress() {
     String firstNo = questionNumber.toString();
@@ -89,17 +55,23 @@ class _FlashScreenState extends State<FlashScreen> {
     String secondNo = totalQuestions.toString();
     return "Completed: " + firstNo + breaker + secondNo;
   }
-
+  @override
+  void dispose() {
+    quizBrain.removeListener(listener);
+    quizBrain.eraseQuestionBank();
+    super.dispose();
+  }
   @override
   Widget build(BuildContext context) {
-    quizBrain.addListener(() {
+    listener = () {
       setState((){
         questionNumber = quizBrain.getQuestionNumber();
         totalQuestions = quizBrain.getQuestionBankLength();
         questionText = quizBrain.getQuestionText();
         questionAnswer = quizBrain.getQuestionAnswer();
       });
-    });
+    };
+    quizBrain.addListener(listener);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.black54,
@@ -175,10 +147,10 @@ class DefaultPage extends StatefulWidget {
 
 class _DefaultPageState extends State<DefaultPage> {
   bool loading = true;
-  loadAsset() async {
+  loadAsset(filename) async {
     print('Loading');
     List<List<dynamic>> data = [];
-    final String myData = await rootBundle.loadString("assets/sample_questions.csv");
+    final String myData = await rootBundle.loadString("assets/"+filename+".csv");
     print('Converting');
     List<List<dynamic>> csvTable = CsvToListConverter().convert(myData);
     print('Starting');
@@ -195,7 +167,7 @@ class _DefaultPageState extends State<DefaultPage> {
 
   @override
   Widget build(BuildContext context) {
-    var spacecrafts = ["James Web","Enterprise","Hubble","Kepler","Juno","Casini","Columbia","Challenger","Huygens","Galileo","Apollo","Spitzer","WMAP","Swift","Atlantis"];
+    var spacecrafts = ["Chapter 1", "Chapter 2"];
     var myGridView = new GridView.builder(
       itemCount: spacecrafts.length,
       gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
@@ -210,6 +182,11 @@ class _DefaultPageState extends State<DefaultPage> {
             ),
           ),
           onTap: () {
+            loadAsset(spacecrafts[index].replaceAll(" ", ""));
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => FlashScreen()),
+            );
           },
         );
       },
@@ -217,7 +194,7 @@ class _DefaultPageState extends State<DefaultPage> {
 
     return new Scaffold(
       appBar: new AppBar(
-          title: new Text("Flutter GridView")
+          title: new Text("Greek Study Cards")
       ),
       body: myGridView,
     );
