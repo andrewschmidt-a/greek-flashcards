@@ -7,8 +7,8 @@ exports.handler = async event => {
     return {
       statusCode: 200,
       body: JSON.stringify({
-          "Chapter1": CSV.parse(fs.readFileSync(resolve(`./assets/Chapter1.csv`), 'utf-8')),
-          "Chapter2": CSV.parse(fs.readFileSync(resolve(`./assets/Chapter2.csv`), 'utf-8'))
+          "Chapter1": CSV.parse(fs.readFileSync(resolve(`./Chapter1.csv`), 'utf-8')),
+          "Chapter2": CSV.parse(fs.readFileSync(resolve(`./Chapter2.csv`), 'utf-8'))
       }),
     }
   }
