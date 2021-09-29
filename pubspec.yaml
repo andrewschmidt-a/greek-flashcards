@@ -27,6 +27,7 @@ dependencies:
   flip_card: ^0.4.4
   csv: ^4.0.3
   page_transition: ^1.1.6
+  http: ^0.12.0+2
 
 dev_dependencies:
   flutter_test:
