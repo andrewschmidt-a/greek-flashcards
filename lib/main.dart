@@ -152,7 +152,7 @@ class _DefaultPageState extends State<DefaultPage> {
   loadAsset(filename) async {
     print('Loading');
     List<List<dynamic>> data = [];
-    Response res = await get("http://greek.nemcrunchers.dev/.netlify/functions/content");;
+    Response res = await get("https://greek.nemcrunchers.dev/.netlify/functions/content");;
     print('Converting');
     List<List<dynamic>> csvTable = jsonDecode(res.body)[filename];
     print('Starting');
