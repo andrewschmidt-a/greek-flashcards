@@ -30,117 +30,12 @@ class StudyApp extends StatelessWidget {
       initialRoute: 'defaultpage',
       routes: <String, WidgetBuilder>{
         'defaultpage': (BuildContext context) => new DefaultPage(),
-        'flashscreen': (BuildContext context) => new FlashScreen()
+        'flashscreen': (BuildContext context) => new FlashScreen(quizBrain, scoreKeeper)
       },
     );
   }
 }
 
-class FlashScreen extends StatefulWidget {
-  @override
-  _FlashScreenState createState() => _FlashScreenState();
-}
-
-class _FlashScreenState extends State<FlashScreen> {
-
-  int questionNumber = quizBrain.getQuestionNumber();
-  int totalQuestions = quizBrain.getQuestionBankLength();
-  String questionText = quizBrain.getQuestionText();
-  String questionAnswer = quizBrain.getQuestionAnswer();
-  VoidCallback listener  = (){
-
-  };
-
-  String progress() {
-    String firstNo = questionNumber.toString();
-    String breaker = ' / ';
-    String secondNo = totalQuestions.toString();
-    return "Completed: " + firstNo + breaker + secondNo;
-  }
-  @override
-  void dispose() {
-    quizBrain.removeListener(listener);
-    quizBrain.eraseQuestionBank();
-    super.dispose();
-  }
-  @override
-  Widget build(BuildContext context) {
-    listener = () {
-      setState((){
-        questionNumber = quizBrain.getQuestionNumber();
-        totalQuestions = quizBrain.getQuestionBankLength();
-        questionText = quizBrain.getQuestionText();
-        questionAnswer = quizBrain.getQuestionAnswer();
-      });
-    };
-    quizBrain.addListener(listener);
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.black54,
-        title: Text(progress()),
-      ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: <Widget>[
-          Expanded(
-            flex: 5,
-            child: FlashCardPage(quizBrain, scoreKeeper),
-          ),
-          Expanded(
-            flex: 1,
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: <Widget>[
-                  Expanded(
-                    child: Ink(
-                      decoration: const ShapeDecoration(
-                        color: Colors.red,
-                        shape: CircleBorder(),
-                      ),
-                      child: IconButton(
-                        icon: Icon(Icons.close),
-                        color: Colors.white,
-                        onPressed: () {
-                          scoreKeeper.checkAnswer(
-                              quizBrain.getQuestionNumber(), false);
-                              quizBrain.nextQuestion();
-                        },
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 150.0,
-                    width: 20.0,
-                    child: VerticalDivider(color: Colors.teal.shade500),
-                  ),
-                  Expanded(
-                    child: Ink(
-                      decoration: const ShapeDecoration(
-                        color: Colors.green,
-                        shape: CircleBorder(),
-                      ),
-                      child: IconButton(
-                        icon: Icon(Icons.check),
-                        color: Colors.white,
-                        onPressed: () {
-                          scoreKeeper.checkAnswer(
-                              quizBrain.getQuestionNumber(), true);
-                              quizBrain.nextQuestion();
-                        },
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
 
 class DefaultPage extends StatefulWidget {
   @override
@@ -187,7 +82,7 @@ class _DefaultPageState extends State<DefaultPage> {
             loadAsset(spacecrafts[index].replaceAll(" ", ""));
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => FlashScreen()),
+              MaterialPageRoute(builder: (context) => FlashScreen(quizBrain, scoreKeeper)),
             );
           },
         );
