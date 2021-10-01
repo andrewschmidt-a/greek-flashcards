@@ -5,8 +5,13 @@
         "path": "flashcards.json"
     },
     {
-        "title": "Lesson",
+        "title": "Lesson: Verbs",
         "type": "markdown",
-        "path": "teaching1.md"
+        "path": "verb.md"
+    },
+    {
+        "title": "Markdown Example",
+        "type": "markdown",
+        "path": "mdexample.md"
     }
 ]
