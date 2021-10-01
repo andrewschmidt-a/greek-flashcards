@@ -8,7 +8,7 @@ const verifyJwt = NetlifyJwtVerifier({
   audience: 'Gxd73MGuYFuKwMnLAbvd8OlKKx5JBfwW'
 });
 const withoutAuth = async (event, context) => {
-  const { claims } = context.identityContext;
+  const { claims } = context.identityContext ?? {};
   let path = event.queryStringParameters.path? event.queryStringParameters.path: "./index.json";
   let fileContents = JSON.parse(fs.readFileSync(require.resolve(path)));
 
