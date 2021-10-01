@@ -8,7 +8,7 @@ const verifyJwt = NetlifyJwtVerifier({
   audience: 'Gxd73MGuYFuKwMnLAbvd8OlKKx5JBfwW'
 });
 const withoutAuth = async (event, context) => {
-  const { claims } = (context.identityContext)?context.identityContext:{claims:[]};
+  const { claims } = context.identityContext;
   let path = event.queryStringParameters.path? event.queryStringParameters.path: "./index.json";
   let fileContents = JSON.parse(fs.readFileSync(require.resolve(path)));
 
@@ -38,6 +38,7 @@ exports.handler = async (event, context) => {
     null
   ];
   if(allowedPaths.includes(event.queryStringParameters.path)){
+    context.identityContext = {claims: {}}; // add this to avoid error in next function call
     return await withoutAuth(event, context);
   }else{
     return await withAuth(event, context);
