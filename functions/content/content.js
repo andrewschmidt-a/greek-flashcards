@@ -10,7 +10,7 @@ const verifyJwt = NetlifyJwtVerifier({
 
 exports.handler = verifyJwt(async (event, context) => {
   const { claims } = context.identityContext;
-  let path = event.queryStringParameters.path? event.queryStringParameters.path: "index.json";
+  let path = event.queryStringParameters.path? event.queryStringParameters.path: "./index.json";
   let fileContents = JSON.parse(fs.readFileSync(require.resolve(path)));
 
   let returnValue = fileContents.map(el => {
