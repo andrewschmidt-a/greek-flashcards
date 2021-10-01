@@ -26,7 +26,7 @@ class LambdaCaller {
     return headers;
   }
 
-  Future<List<dynamic>> getContentList(String path) async {
+  Future<String> getContent(String path) async {
 
     Response res = await get(
       getUri("content", {'path': path}),
@@ -36,7 +36,7 @@ class LambdaCaller {
     if (res.statusCode == 200) {
       // If the server did return a 200 OK response,
       // then parse the JSON.
-      return jsonDecode(res.body);
+      return res.body;
     } else {
       // If the server did not return a 200 OK response,
       // then throw an exception.
@@ -48,9 +48,12 @@ class LambdaCaller {
   }
 
   Future<List<GridItem>> getGridItemList(String path) async {
-      return (await getContentList(path)).map((item) => GridItem.fromJson(item)).toList();
+      return jsonDecode(await getContent(path)).map((item) => GridItem.fromJson(item)).toList();
   }
   Future<List<Vocab>> getFlashCardList(String path) async {
-      return (await getContentList(path)).map((item) => Vocab.fromJson(item)).toList();
+      return jsonDecode(await getContent(path)).map((item) => Vocab.fromJson(item)).toList();
+  }
+  Future<String> getMarkdownData(String path) async {
+      return await getContent(path);
   }
 }

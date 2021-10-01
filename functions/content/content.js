@@ -10,17 +10,26 @@ const verifyJwt = NetlifyJwtVerifier({
 const withoutAuth = async (event, context) => {
   const { claims } = context.identityContext;
   let path = event.queryStringParameters.path? event.queryStringParameters.path: "./index.json";
-  let fileContents = JSON.parse(fs.readFileSync(require.resolve(path)));
 
-  let returnValue = fileContents.map(el => {
-    if(_.has(el, 'path')){
-      let pathComponents = path.split("/");
-      pathComponents[pathComponents.length-1] = el['path'];
-      return _.merge(el, {"path": pathComponents.join('/')});
-    }else{
-      return el;
-    }
-  });
+  var fileContents = fs.readFileSync(require.resolve(path));
+  let returnValue = ""
+
+  if(path.endsWith(".json")){// This is an intermediate node and will be parsed as json
+    let fileJSON = JSON.parse(fileContents);
+  
+    returnValue = fileJSON.map(el => {
+      if(_.has(el, 'path')){
+        let pathComponents = path.split("/");
+        pathComponents[pathComponents.length-1] = el['path'];
+        return _.merge(el, {"path": pathComponents.join('/')});
+      }else{
+        return el;
+      }
+    });
+  }else{
+    returnValue = fileContents; // return the raw content
+  }
+
   return {
     statusCode: 200,
     body: JSON.stringify(returnValue),
