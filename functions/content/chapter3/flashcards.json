@@ -1,0 +1,212 @@
+[
+    {
+      "greek": "ἀγαθος",
+      "english": "good",
+      "type": "adjective",
+      "gender": ""
+    },
+    {
+      "greek": "ἀγορα",
+      "english": "marketplace",
+      "type": "verb",
+      "gender": "feminine"
+    },
+    {
+      "greek": "ἀγοραζω",
+      "english": "I buy",
+      "type": "verb",
+      "gender": ""
+    },
+    {
+      "greek": "ἀληθεια",
+      "english": "truth",
+      "type": "noun",
+      "gender": "feminine"
+    },
+    {
+      "greek": "ἁμαρτια",
+      "english": "sin",
+      "type": "noun",
+      "gender": "feminine"
+    },
+    {
+      "greek": "ἀρχη",
+      "english": "beginning",
+      "type": "noun",
+      "gender": ""
+    },
+    {
+      "greek": "βασιλεια",
+      "english": "kingdom",
+      "type": "noun",
+      "gender": "feminine"
+    },
+    {
+      "greek": "γραφη",
+      "english": "writing, scripture",
+      "type": "noun",
+      "gender": "feminine"
+    },
+    {
+      "greek": "δικαιος",
+      "english": "rightous, just, fair",
+      "type": "adjective",
+      "gender": ""
+    },
+    {
+      "greek": "δοξα",
+      "english": "glory",
+      "type": "noun",
+      "gender": "feminine"
+    },
+    {
+      "greek": "εἰρηνη",
+      "english": "peace",
+      "type": "noun",
+      "gender": "feminine"
+    },
+    {
+      "greek": "ἐκκλησια",
+      "english": "church",
+      "type": "noun",
+      "gender": "feminine"
+    },
+    {
+      "greek": "ἐντολη",
+      "english": "commandment",
+      "type": "noun",
+      "gender": "feminine"
+    },
+    {
+      "greek": "ἐξουσια",
+      "english": "authority",
+      "type": "noun",
+      "gender": "feminine"
+    },
+    {
+      "greek": "ἐρημος",
+      "english": "desert",
+      "type": "noun",
+      "gender": "masculine"
+    },
+    {
+      "greek": "ἐσχατος",
+      "english": "last",
+      "type": "adjective",
+      "gender": ""
+    },
+    {
+      "greek": "ζωη",
+      "english": "life",
+      "type": "noun",
+      "gender": "feminine"
+    },
+    {
+      "greek": "θυρα",
+      "english": "door",
+      "type": "noun",
+      "gender": "feminine"
+    },
+    {
+      "greek": "καθαριζω",
+      "english": "I cleanse",
+      "type": "verb",
+      "gender": ""
+    },
+    {
+      "greek": "καθαρος",
+      "english": "clean",
+      "type": "adjective",
+      "gender": ""
+    },
+    {
+      "greek": "κακος",
+      "english": "evil",
+      "type": "adjective",
+      "gender": ""
+    },
+    {
+      "greek": "καλος",
+      "english": "good, beautiful",
+      "type": "adjective",
+      "gender": ""
+    },
+    {
+      "greek": "καρδια",
+      "english": "heart",
+      "type": "noun",
+      "gender": "feminine"
+    },
+    {
+      "greek": "κωμη",
+      "english": "village",
+      "type": "noun",
+      "gender": "feminine"
+    },
+    {
+      "greek": "μαθητης",
+      "english": "disciple",
+      "type": "noun",
+      "gender": "masculine"
+    },
+    {
+      "greek": "μικρος",
+      "english": "small",
+      "type": "adjective",
+      "gender": ""
+    },
+    {
+      "greek": "νεκρος",
+      "english": "dead",
+      "type": "adjective",
+      "gender": ""
+    },
+    {
+      "greek": "ὁδος",
+      "english": "way, road, path",
+      "type": "noun",
+      "gender": "masculine"
+    },
+    {
+      "greek": "παραβολη",
+      "english": "parable",
+      "type": "noun",
+      "gender": "feminine"
+    },
+    {
+      "greek": "πιστος",
+      "english": "faithful",
+      "type": "adjective",
+      "gender": ""
+    },
+    {
+      "greek": "πονηρος",
+      "english": "evil",
+      "type": "adjective",
+      "gender": ""
+    },
+    {
+      "greek": "προφητης",
+      "english": "prophet",
+      "type": "noun",
+      "gender": "masculin"
+    },
+    {
+      "greek": "πρωτος",
+      "english": "first",
+      "type": "adjective",
+      "gender": ""
+    },
+    {
+      "greek": "χαρά",
+      "english": "joy",
+      "type": "noun",
+      "gender": "feminine"
+    },
+    {
+      "greek": "ὡρα",
+      "english": "hour",
+      "type": "noun",
+      "gender": "feminine"
+    }
+  ]
