@@ -71,7 +71,7 @@ class NavDrawer extends StatelessWidget {
         utf8.decode(base64Url.decode(base64Url.normalize(parts[1]))));
   }
   Future<Map<String, dynamic>> getUserDetails(String accessToken) async {
-    final url = 'https://$AUTH0_DOMAIN/userinfo';
+    final url = Uri.https(AUTH0_DOMAIN, "/userinfo");
     final response = await get(
       url,
       headers: {'Authorization': 'Bearer $accessToken'},

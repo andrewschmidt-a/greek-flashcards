@@ -27,7 +27,7 @@ dependencies:
   flip_card: ^0.4.4
   csv: ^4.0.3
   page_transition: ^1.1.6
-  http: ^0.12.0+2
+  http: ^0.13.3
   flutter_appauth: ^0.9.1
   flutter_secure_storage: ^3.3.3
   auth0_flutter_web: 0.0.1-alpha.6

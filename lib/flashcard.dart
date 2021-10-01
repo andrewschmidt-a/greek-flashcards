@@ -1,52 +1,62 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flip_card/flip_card.dart';
-import 'quiz_brain.dart';
-import 'scorekeeper.dart';
+import 'package:provider/provider.dart';
+import 'package:study_app/authObject.dart';
+import 'package:study_app/models/vocab.dart';
+import 'package:study_app/services/lambdaCaller.dart';
 
 
 class FlashScreen extends StatefulWidget {
-  FlashScreen(this.quizBrain, this.scoreKeeper);
-  QuizBrain quizBrain;
-  ScoreKeeper scoreKeeper;
+  FlashScreen(this.title, this.path);
+  String title; 
+  String path; 
   @override
-  _FlashScreenState createState() => _FlashScreenState(quizBrain, scoreKeeper);
+  _FlashScreenState createState() => _FlashScreenState(title, path);
 }
 
 class _FlashScreenState extends State<FlashScreen> {
-  _FlashScreenState(this.quizBrain, this.scoreKeeper);
-  QuizBrain quizBrain;
-  ScoreKeeper scoreKeeper;
+  _FlashScreenState(this.title, this.path);
+  List<Vocab> vocabList = [];
+  late LambdaCaller lambdaCaller;
+  bool loaded = false;
+  String title;
+  String path;
 
   int questionNumber = 0;
-  int totalQuestions = 0;
-  String questionText = "";
-  String questionAnswer = "";
-  VoidCallback listener  = (){};
 
+  markCorrect(){
+    if(questionNumber < vocabList.length-1){
+      setState(() {
+        questionNumber = questionNumber +1;
+      });
+    }
+  }
+  markIncorrect(){
+    this.vocabList.add(this.vocabList.removeAt(this.questionNumber)); // Add current card to end
+    setState(() {
+      vocabList = this.vocabList; // set state
+    });
+  }
+  loadFlashCards() async {
+    List<Vocab> vocab = await lambdaCaller.getFlashCardList(path); 
+    setState(() {
+      vocabList = vocab;
+      loaded = true;
+    });
+  }
   String progress() {
     String firstNo = questionNumber.toString();
     String breaker = ' / ';
-    String secondNo = totalQuestions.toString();
+    String secondNo = this.vocabList.length.toString();
     return "Completed: " + firstNo + breaker + secondNo;
   }
   @override
-  void dispose() {
-    quizBrain.removeListener(listener);
-    quizBrain.eraseQuestionBank();
-    super.dispose();
-  }
-  @override
   Widget build(BuildContext context) {
-    listener = () {
-      setState((){
-        questionNumber = quizBrain.getQuestionNumber();
-        totalQuestions = quizBrain.getQuestionBankLength();
-        questionText = quizBrain.getQuestionText();
-        questionAnswer = quizBrain.getQuestionAnswer();
-      });
-    };
-    quizBrain.addListener(listener);
+    lambdaCaller = LambdaCaller(context);
+    if(this.loaded == false){
+      loadFlashCards();
+    }
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.black54,
@@ -57,7 +67,7 @@ class _FlashScreenState extends State<FlashScreen> {
         children: <Widget>[
           Expanded(
             flex: 5,
-            child: FlashCardPage(quizBrain, scoreKeeper),
+            child: FlashCardPage(vocabList[questionNumber]),
           ),
           Expanded(
             flex: 1,
@@ -76,9 +86,7 @@ class _FlashScreenState extends State<FlashScreen> {
                         icon: Icon(Icons.close),
                         color: Colors.white,
                         onPressed: () {
-                          scoreKeeper.checkAnswer(
-                              quizBrain.getQuestionNumber(), false);
-                              quizBrain.nextQuestion();
+                              markIncorrect();
                         },
                       ),
                     ),
@@ -98,9 +106,7 @@ class _FlashScreenState extends State<FlashScreen> {
                         icon: Icon(Icons.check),
                         color: Colors.white,
                         onPressed: () {
-                          scoreKeeper.checkAnswer(
-                              quizBrain.getQuestionNumber(), true);
-                              quizBrain.nextQuestion();
+                          markCorrect();
                         },
                       ),
                     ),
@@ -116,10 +122,9 @@ class _FlashScreenState extends State<FlashScreen> {
 }
 
 class FlashCardPage extends StatelessWidget {
-  FlashCardPage(this.quizBrain, this.scoreKeeper);
+  FlashCardPage(this.vocabItem);
 
-  QuizBrain quizBrain;
-  ScoreKeeper scoreKeeper;
+  Vocab vocabItem;
 
   _renderBg() {
     return Container(
@@ -147,7 +152,7 @@ class FlashCardPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Text(
-                quizBrain.getQuestionText(),
+                vocabItem.greek,
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 25.0,
@@ -166,7 +171,7 @@ class FlashCardPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Text(
-                quizBrain.getQuestionAnswer(),
+                vocabItem.english,
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 25.0,
@@ -208,13 +213,13 @@ class FlashCardPage extends StatelessWidget {
           if (direction == DismissDirection.startToEnd) {
             // Right Swipe
 
-            this.scoreKeeper.checkAnswer(quizBrain.getQuestionNumber(), true);
+            // this.scoreKeeper.checkAnswer(quizBrain.getQuestionNumber(), true);
             
 
 
           } else if (direction == DismissDirection.endToStart) {
             //Left Swipe
-            this.scoreKeeper.checkAnswer(quizBrain.getQuestionNumber(), false);
+            // this.scoreKeeper.checkAnswer(quizBrain.getQuestionNumber(), false);
           }
         },
       ),

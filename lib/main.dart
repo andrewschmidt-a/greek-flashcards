@@ -1,35 +1,13 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
-import 'package:csv/csv.dart'; 
 import 'package:provider/provider.dart';
-import 'dart:convert';
-import 'package:http/http.dart';
-import 'package:flutter_appauth/flutter_appauth.dart';
-import 'package:auth0_flutter_web/auth0_flutter_web.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:flutter/services.dart' show rootBundle;
 import 'package:study_app/services/lambdaCaller.dart';
-//import 'package:page_transition/page_transition.dart';
 
 import 'authObject.dart';
 import 'gridScreen.dart';
 import 'models/gridItem.dart';
-import 'question.dart';
 import 'nav-drawer.dart';
-import 'flashcard.dart';
-import 'quiz_brain.dart';
-import 'scorekeeper.dart';
-//import 'Constants.dart';
-
-/// -----------------------------------
-///           Auth0 Variables
-/// -----------------------------------
-
-
-QuizBrain quizBrain = QuizBrain();
-ScoreKeeper scoreKeeper = ScoreKeeper();
-
 void main() async {
   
   runApp(
@@ -45,12 +23,11 @@ class StudyApp extends StatelessWidget {
   Widget build(BuildContext context) {
 
     return MaterialApp(
-      title: 'Greek Flashcardss',
+      title: 'Greek Flashcards',
       theme: ThemeData.light(),
       initialRoute: 'defaultpage',
       routes: <String, WidgetBuilder>{
-        'defaultpage': (BuildContext context) => new DefaultPage(),
-        'flashscreen': (BuildContext context) => new FlashScreen(quizBrain, scoreKeeper)
+        'defaultpage': (BuildContext context) => new DefaultPage()
       },
     );
   }
@@ -66,6 +43,7 @@ class _DefaultPageState extends State<DefaultPage> {
   
   AuthObject auth = AuthObject.empty();
   List<GridItem> gridItems = [];
+  bool loaded = false;
   late LambdaCaller lambdaCaller;
   // loadAsset(filename) async {
   //   print('Loading');
@@ -89,7 +67,12 @@ class _DefaultPageState extends State<DefaultPage> {
   // }
 
   loadGridItems() async {
-    gridItems = await lambdaCaller.getGridItemList("");
+    var items = await lambdaCaller.getGridItemList("");
+    print(items);
+    setState(() {
+      loaded = true;
+      gridItems = items;
+    });
   }
 
   @override
@@ -97,7 +80,9 @@ class _DefaultPageState extends State<DefaultPage> {
     this.auth = Provider.of<AuthObject>(context);
 
     lambdaCaller = LambdaCaller(context);
-    loadGridItems();
+    if(this.loaded == false){
+      loadGridItems();
+    }
 
     return new Scaffold(
         drawer: NavDrawer(),

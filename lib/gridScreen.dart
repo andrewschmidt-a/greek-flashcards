@@ -1,32 +1,73 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flip_card/flip_card.dart';
+import 'package:provider/provider.dart';
+import 'package:study_app/authObject.dart';
+import 'package:study_app/flashcard.dart';
+import 'package:study_app/services/lambdaCaller.dart';
 import 'dart:math';
 import 'models/gridItem.dart';
 
 
 class GridScreen extends StatefulWidget {
-  GridScreen(this.title);
+  GridScreen(this.title, this.path);
   late String title;
+  late String path;
 
   @override
-  _GridScreenState createState() => _GridScreenState(this.title);
+  _GridScreenState createState() => _GridScreenState(this.title, this.path);
 }
 
 class _GridScreenState extends State<GridScreen> {
 
-  _GridScreenState(this.title);
+  _GridScreenState(this.title, this.path);
 
   late String title;
+  late String path;
+  AuthObject auth = AuthObject.empty();
+  List<GridItem> gridItems = [];
+  late LambdaCaller lambdaCaller;
+  String error = "";
+  bool loaded = false;
+
+  loadGridItems() async {
+    try{
+      var items = await lambdaCaller.getGridItemList(this.path);
+      setState(() {
+        loaded = true;
+        gridItems = items;
+      });
+    }catch(e){
+      
+      setState(() {
+        loaded = true;
+        error = "$e";
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
+    this.auth = Provider.of<AuthObject>(context);
+
+    lambdaCaller = LambdaCaller(context);
+    if(this.loaded == false){
+      loadGridItems();
+    }
+
+    renderBody(){
+      if(this.error != ""){
+        return Text(this.error);
+      }
+      return GridLayout(this.gridItems);
+    }
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.black54,
         title: Text(title),
       ),
-      body: GridLayout([])
+      body: renderBody()
     );
   }
 }
@@ -42,7 +83,21 @@ class GridLayout extends StatelessWidget {
         widgets.add(new GestureDetector(
           // When the child is tapped, show a snackbar.
           onTap: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context) => GridScreen(gridItems[i].title)));
+            switch(gridItems[i].type){
+              case "grid":{
+                Navigator.push(context, MaterialPageRoute(builder: (context) => GridScreen(gridItems[i].title, gridItems[i].path)));
+              }
+              break;
+              case "flashcards":{
+                Navigator.push(context, MaterialPageRoute(builder: (context) => FlashScreen(gridItems[i].title, gridItems[i].path)));
+              }
+              break;
+              default:{
+
+              }
+              break;
+            }
+            
           },
           child: new Container(
                 padding: const EdgeInsets.all(8),
