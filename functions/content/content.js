@@ -32,6 +32,7 @@ const withAuth = verifyJwt(withoutAuth);
 
 exports.handler = async (event, context) => {
   let allowedPaths = [
+    "./index.json",
     "",
     undefined,
     null
