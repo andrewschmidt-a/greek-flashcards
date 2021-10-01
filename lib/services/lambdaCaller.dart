@@ -9,6 +9,7 @@ import '../models/gridItem.dart';
 
 class LambdaCaller {
   AuthObject auth = AuthObject.empty();
+  String rootUrl = "https://greek.nemcrunchers.dev/.netlify/functions/";
   LambdaCaller(BuildContext context){
     this.auth = Provider.of<AuthObject>(context);
   }
@@ -22,13 +23,9 @@ class LambdaCaller {
   }
 
   Future<List<GridItem>> getGridItemList(String path) async {
-    var headers = new Map<String, String>();
-    if(this.auth.isAuthenticated){
-      headers = {'Authorization': 'Bearer '+this.auth.token};
-    }
     Response res = await get(
-      "https://greek.nemcrunchers.dev/.netlify/functions/content",
-      headers: headers,
+      "${rootUrl}content",
+      headers: this.headers,
     );
     
     if (res.statusCode == 200) {

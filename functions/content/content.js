@@ -37,7 +37,7 @@ exports.handler = async (event, context) => {
     undefined,
     null
   ];
-  if(allowedPaths.contains(event.queryStringParameters.path)){
+  if(allowedPaths.includes(event.queryStringParameters.path)){
     return await withoutAuth(event, context);
   }else{
     return await withAuth(event, context);
