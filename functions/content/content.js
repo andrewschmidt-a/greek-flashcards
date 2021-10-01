@@ -7,8 +7,7 @@ const verifyJwt = NetlifyJwtVerifier({
   issuer: 'https://nemcrunchers.auth0.com/',
   audience: 'Gxd73MGuYFuKwMnLAbvd8OlKKx5JBfwW'
 });
-
-exports.handler = verifyJwt(async (event, context) => {
+const withoutAuth = async (event, context) => {
   const { claims } = context.identityContext;
   let path = event.queryStringParameters.path? event.queryStringParameters.path: "./index.json";
   let fileContents = JSON.parse(fs.readFileSync(require.resolve(path)));
@@ -26,4 +25,20 @@ exports.handler = verifyJwt(async (event, context) => {
     statusCode: 200,
     body: JSON.stringify(returnValue),
   }
-});
+}
+
+const withAuth = verifyJwt(withoutAuth);
+
+
+exports.handler = async (event, context) => {
+  let allowedPaths = [
+    "",
+    undefined,
+    null
+  ];
+  if(allowedPaths.contains(event.queryStringParameters.path)){
+    return await withoutAuth(event, context);
+  }else{
+    return await withAuth(event, context);
+  }
+};
