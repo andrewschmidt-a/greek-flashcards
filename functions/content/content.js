@@ -17,7 +17,7 @@ exports.handler = verifyJwt(async (event, context) => {
     if(_.has(el, 'path')){
       let pathComponents = path.split("/");
       pathComponents[pathComponents.length-1] = el['path'];
-      return _.merge(el, {"path": components.join(components)});
+      return _.merge(el, {"path": pathComponents.join('/')});
     }else{
       return el;
     }
