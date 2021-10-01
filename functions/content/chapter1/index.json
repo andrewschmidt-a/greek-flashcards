@@ -3,5 +3,10 @@
         "title": "Flashcards",
         "type": "flashcards",
         "path": "flashcards.json"
+    },
+    {
+        "title": "Lesson",
+        "type": "markdown",
+        "path": "teaching1.md"
     }
 ]
