@@ -27,7 +27,7 @@ const withoutAuth = async (event, context) => {
       }
     });
   }else{
-    returnValue = fileContents; // return the raw content
+    returnValue = fileContents.toString(); // return the raw content. The files must be relatively small. No hosting videos here!
   }
 
   return {
