@@ -1,0 +1,12 @@
+[
+    {
+        "title": "Chapter 1",
+        "path": "chapter1/index.json",
+        "type": "grid"
+    },
+    {
+        "title": "Chapter 2",
+        "path": "chapter2/index.json",
+        "type": "grid"
+    }
+]

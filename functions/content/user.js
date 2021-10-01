@@ -1,7 +1,6 @@
 const { NetlifyJwtVerifier } = require('@serverless-jwt/netlify');
 const CSV = require('comma-separated-values')
 const fs = require('fs')
-const _ = require('lodash');
 
 const verifyJwt = NetlifyJwtVerifier({
   issuer: 'https://nemcrunchers.auth0.com/',
@@ -10,14 +9,11 @@ const verifyJwt = NetlifyJwtVerifier({
 
 exports.handler = verifyJwt(async (event, context) => {
   const { claims } = context.identityContext;
-  let path = event.queryStringParameters.path? event.queryStringParameters.path: "index.json";
-  let file = JSON.parse(fs.readFileSync(require.resolve(path)));
   return {
     statusCode: 200,
-    body: JSON.stringify(file.map(el => {
-      let components = path.split("/");
-      components[components.length-1] = el['path'];
-      return _.merge(el, {"path": components.join(components)});
-    })),
+    body: JSON.stringify({
+        "Chapter1": CSV.parse(fs.readFileSync(require.resolve(`./Chapter1.csv`), 'utf-8')),
+        "Chapter2": CSV.parse(fs.readFileSync(require.resolve(`./Chapter2.csv`), 'utf-8'))
+    }),
   }
 });

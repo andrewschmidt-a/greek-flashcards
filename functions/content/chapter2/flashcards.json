@@ -1,0 +1,152 @@
+[
+    {
+      "greek": "ἀγγελος",
+      "english": "angel, messenger",
+      "type": "noun",
+      "gender": "masculine"
+    },
+    {
+      "greek": "ἀγρός",
+      "english": "field",
+      "type": "noun",
+      "gender": "masculine"
+    },
+    {
+      "greek": "ἄδελθός",
+      "english": "brother",
+      "type": "noun",
+      "gender": "masculine"
+    },
+    {
+      "greek": "ἀνθρωπος",
+      "english": "man",
+      "type": "noun",
+      "gender": "masculine"
+    },
+    {
+      "greek": "ἄρτος",
+      "english": "bread, loaf",
+      "type": "noun",
+      "gender": "masculine"
+    },
+    {
+      "greek": "βιβλίον",
+      "english": "book",
+      "type": "noun",
+      "gender": "neuter"
+    },
+    {
+      "greek": "διδἀσκαλος",
+      "english": "teacher",
+      "type": "noun",
+      "gender": "masculine"
+    },
+    {
+      "greek": "δοὐλος",
+      "english": "slave, servant",
+      "type": "noun",
+      "gender": "masculine"
+    },
+    {
+      "greek": "δωρον",
+      "english": "gift",
+      "type": "noun",
+      "gender": "neuter"
+    },
+    {
+      "greek": "ἔργον",
+      "english": "work",
+      "type": "noun",
+      "gender": "neuter"
+    },
+    {
+      "greek": "θάνατος",
+      "english": "death",
+      "type": "noun",
+      "gender": "masculine"
+    },
+    {
+      "greek": "θεός",
+      "english": "God",
+      "type": "noun",
+      "gender": "masculine"
+    },
+    {
+      "greek": "ἰερόν",
+      "english": "temple",
+      "type": "noun",
+      "gender": "neuter"
+    },
+    {
+      "greek": "ἰμάτιον",
+      "english": "garment",
+      "type": "noun",
+      "gender": "neuter"
+    },
+    {
+      "greek": "καί",
+      "english": "and",
+      "type": "",
+      "gender": ""
+    },
+    {
+      "greek": "καρπός",
+      "english": "fruit",
+      "type": "noun",
+      "gender": "masculine"
+    },
+    {
+      "greek": "κόσμος",
+      "english": "world",
+      "type": "noun",
+      "gender": "masculine"
+    },
+    {
+      "greek": "λαός",
+      "english": "people",
+      "type": "noun",
+      "gender": "masculine"
+    },
+    {
+      "greek": "λόγος",
+      "english": "word",
+      "type": "noun",
+      "gender": "masculine"
+    },
+    {
+      "greek": "νόμος",
+      "english": "law",
+      "type": "noun",
+      "gender": "masculine"
+    },
+    {
+      "greek": "οίκος",
+      "english": "house",
+      "type": "noun",
+      "gender": "masculine"
+    },
+    {
+      "greek": "πλοἰον",
+      "english": "boat",
+      "type": "noun",
+      "gender": "neuter"
+    },
+    {
+      "greek": "πρόσωπον",
+      "english": "face",
+      "type": "noun",
+      "gender": "neuter"
+    },
+    {
+      "greek": "τέκνον",
+      "english": "child",
+      "type": "noun",
+      "gender": "neuter"
+    },
+    {
+      "greek": "υἰός",
+      "english": "son",
+      "type": "noun",
+      "gender": "masculine"
+    }
+  ]

@@ -1,0 +1,140 @@
+[
+    {
+      "greek": "αἰρω",
+      "english": "I take up, take away",
+      "type": "verb",
+      "gender": ""
+    },
+    {
+      "greek": "ἀκουω",
+      "english": "I hear",
+      "type": "verb",
+      "gender": ""
+    },
+    {
+      "greek": "ἁμαρτανω",
+      "english": "I sin",
+      "type": "verb",
+      "gender": ""
+    },
+    {
+      "greek": "ἀνοιγω",
+      "english": "I open",
+      "type": "verb",
+      "gender": ""
+    },
+    {
+      "greek": "ἀποκτεινω",
+      "english": "I kill",
+      "type": "verb",
+      "gender": ""
+    },
+    {
+      "greek": "βαλλω",
+      "english": "I throw",
+      "type": "verb",
+      "gender": ""
+    },
+    {
+      "greek": "βαπτιζω",
+      "english": "I baptize",
+      "type": "verb",
+      "gender": ""
+    },
+    {
+      "greek": "βλεπω",
+      "english": "I see",
+      "type": "verb",
+      "gender": ""
+    },
+    {
+      "greek": "γινωσκω",
+      "english": "I know",
+      "type": "verb",
+      "gender": ""
+    },
+    {
+      "greek": "γραφω",
+      "english": "I write",
+      "type": "verb",
+      "gender": ""
+    },
+    {
+      "greek": "διδασκω",
+      "english": "I teach",
+      "type": "verb",
+      "gender": ""
+    },
+    {
+      "greek": "διωκω",
+      "english": "I pursue, persecute",
+      "type": "verb",
+      "gender": ""
+    },
+    {
+      "greek": "δοξαζω",
+      "english": "I glorify",
+      "type": "verb",
+      "gender": ""
+    },
+    {
+      "greek": "ἐγειρω",
+      "english": "I raise up",
+      "type": "verb",
+      "gender": ""
+    },
+    {
+      "greek": "ἐσθιω",
+      "english": "I eat",
+      "type": "verb",
+      "gender": ""
+    },
+    {
+      "greek": "εὑρισκω",
+      "english": "I find",
+      "type": "verb",
+      "gender": ""
+    },
+    {
+      "greek": "ἐχω",
+      "english": "I have",
+      "type": "verb",
+      "gender": ""
+    },
+    {
+      "greek": "θεραπευω",
+      "english": "I heal",
+      "type": "verb",
+      "gender": ""
+    },
+    {
+      "greek": "κρινω",
+      "english": "I judge",
+      "type": "verb",
+      "gender": ""
+    },
+    {
+      "greek": "λαμβανω",
+      "english": "I take, receive",
+      "type": "verb",
+      "gender": ""
+    },
+    {
+      "greek": "λεγω",
+      "english": "I say, speak",
+      "type": "verb",
+      "gender": ""
+    },
+    {
+      "greek": "λυω",
+      "english": "I loose, destroy",
+      "type": "verb",
+      "gender": ""
+    },
+    {
+      "greek": "πεμπω",
+      "english": "I send",
+      "type": "verb",
+      "gender": ""
+    }
+  ]

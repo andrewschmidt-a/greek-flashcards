@@ -23,8 +23,11 @@
   "homepage": "https://github.com/andrewschmidt-a/greek-flashcards#readme",
   "dependencies": {
     "@serverless-jwt/netlify": "^0.2.1",
+    "authorizenet": "^1.0.8",
     "comma-separated-values": "^3.6.4",
     "fs": "^0.0.1-security",
-    "path": "^0.12.7"
+    "lodash": "^4.17.21",
+    "path": "^0.12.7",
+    "stripe": "^8.178.0"
   }
 }
