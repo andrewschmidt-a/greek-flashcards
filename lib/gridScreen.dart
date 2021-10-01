@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:study_app/authObject.dart';
 import 'package:study_app/flashcard.dart';
 import 'package:study_app/services/lambdaCaller.dart';
+import 'package:study_app/teachingScreen.dart';
 import 'dart:math';
 import 'models/gridItem.dart';
 
@@ -90,6 +91,10 @@ class GridLayout extends StatelessWidget {
               break;
               case "flashcards":{
                 Navigator.push(context, MaterialPageRoute(builder: (context) => FlashScreen(gridItems[i].title, gridItems[i].path)));
+              }
+              break;
+              case "markdown":{
+                Navigator.push(context, MaterialPageRoute(builder: (context) => TeachingScreen(gridItems[i].title, gridItems[i].path)));
               }
               break;
               default:{

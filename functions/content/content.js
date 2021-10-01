@@ -17,7 +17,7 @@ const withoutAuth = async (event, context) => {
   if(path.endsWith(".json")){// This is an intermediate node and will be parsed as json
     let fileJSON = JSON.parse(fileContents);
   
-    returnValue = fileJSON.map(el => {
+    returnValue = JSON.stringify(fileJSON.map(el => {
       if(_.has(el, 'path')){
         let pathComponents = path.split("/");
         pathComponents[pathComponents.length-1] = el['path'];
@@ -25,14 +25,14 @@ const withoutAuth = async (event, context) => {
       }else{
         return el;
       }
-    });
+    }));
   }else{
     returnValue = fileContents.toString(); // return the raw content. The files must be relatively small. No hosting videos here!
   }
 
   return {
     statusCode: 200,
-    body: JSON.stringify(returnValue),
+    body: returnValue,
   }
 }
 
