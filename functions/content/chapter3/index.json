@@ -3,5 +3,10 @@
         "title": "Flashcards",
         "type": "flashcards",
         "path": "flashcards.json"
+    },
+    {
+        "title": "Vocab Matching",
+        "type": "vocabMatch",
+        "path": "flashcards.json"
     }
 ]

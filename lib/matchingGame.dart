@@ -125,7 +125,7 @@ class _MatchingGameState extends State<MatchingGame> {
             padding: const EdgeInsets.all(20),
             crossAxisSpacing: 10,
             mainAxisSpacing: 10,
-            crossAxisCount: (constraints.maxWidth ~/ 150).toInt(),
+            crossAxisCount: (constraints.maxWidth ~/ 100).toInt(),
             children: renderGrid(this.vocabList, context),
           );
         }
