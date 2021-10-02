@@ -128,7 +128,7 @@ class GridLayout extends StatelessWidget {
           padding: const EdgeInsets.all(20),
           crossAxisSpacing: 10,
           mainAxisSpacing: 10,
-          crossAxisCount: (constraints.maxWidth ~/ 250).toInt(),
+          crossAxisCount: (constraints.maxWidth ~/ 150).toInt(),
           children: renderGrid(gridItems, context),
         );
       }
