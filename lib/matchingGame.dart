@@ -82,14 +82,18 @@ class _MatchingGameState extends State<MatchingGame> {
       for(var i = 0; i < vocabList.length; i++){
         widgets.add(new GestureDetector(
           onTap: () {
-            if(selected == -1){
+            if(selected == i){
+              setState(() {
+                selected = -1;
+              });
+            }else if(selected == -1){
               setState(() {
                 selected = i;
               });
             }else{
               if(vocabList[selected].key == vocabList[i].key){
                 vocabList[selected].visible = false;
-                vocabList[selected].visible = false;
+                vocabList[i].visible = false;
               }
               setState(() {
                 this.selected = -1;
@@ -121,7 +125,7 @@ class _MatchingGameState extends State<MatchingGame> {
             padding: const EdgeInsets.all(20),
             crossAxisSpacing: 10,
             mainAxisSpacing: 10,
-            crossAxisCount: (constraints.maxWidth ~/ 250).toInt(),
+            crossAxisCount: (constraints.maxWidth ~/ 150).toInt(),
             children: renderGrid(this.vocabList, context),
           );
         }
