@@ -5,8 +5,9 @@ import 'package:provider/provider.dart';
 import 'package:study_app/authObject.dart';
 import 'package:study_app/flashcard.dart';
 import 'package:study_app/services/lambdaCaller.dart';
-import 'package:study_app/teachingScreen.dart';
-import 'dart:math';
+import 'package:study_app/matchingGame.dart'
+
+import 'package:study_app/teachingScreen.dart';import 'dart:math';
 import 'models/gridItem.dart';
 
 
@@ -82,7 +83,6 @@ class GridLayout extends StatelessWidget {
     List<Widget> widgets = [];
     for(var i = 0; i < gridItems.length; i++){
         widgets.add(new GestureDetector(
-          // When the child is tapped, show a snackbar.
           onTap: () {
             switch(gridItems[i].type){
               case "grid":{
@@ -95,6 +95,10 @@ class GridLayout extends StatelessWidget {
               break;
               case "markdown":{
                 Navigator.push(context, MaterialPageRoute(builder: (context) => TeachingScreen(gridItems[i].title, gridItems[i].path)));
+              }
+              break;
+              case "vocabMatch":{
+                Navigator.push(context, MaterialPageRoute(builder: (context) => MatchingGame(gridItems[i].title, gridItems[i].path)));
               }
               break;
               default:{

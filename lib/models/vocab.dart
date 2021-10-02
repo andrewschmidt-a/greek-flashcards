@@ -1,3 +1,5 @@
+
+
 class Vocab {
   String greek;
   String english;
@@ -10,6 +12,7 @@ class Vocab {
     required this.type,
     required this.gender,
   });
+
 
   factory Vocab.fromJson(Map<String, dynamic> json) {
     return Vocab(
