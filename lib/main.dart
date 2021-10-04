@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:study_app/services/lambdaCaller.dart';
 
-import 'authObject.dart';
+import 'models/authObject.dart';
 import 'gridScreen.dart';
 import 'models/gridItem.dart';
 import 'nav-drawer.dart';

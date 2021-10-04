@@ -11,7 +11,7 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:http/http.dart';
 import 'package:provider/provider.dart';
 
-import 'authObject.dart';
+import 'models/authObject.dart';
 const AUTH0_DOMAIN = 'nemcrunchers.auth0.com';
 const AUTH0_CLIENT_ID = 'Gxd73MGuYFuKwMnLAbvd8OlKKx5JBfwW';
 

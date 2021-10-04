@@ -5,7 +5,6 @@ Verbs are an important peice of a greek sentance. Verbs each have 5 attributes w
 4. Person
 5. Number
 
-
 # Tense
 This describes the time and type of action and can be one of three tenses in biblical greek:
 

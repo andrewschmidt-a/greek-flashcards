@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart';
 import 'package:provider/provider.dart';
-import 'package:study_app/authObject.dart';
+import 'package:study_app/models/authObject.dart';
 import 'package:study_app/models/vocab.dart';
 
 import '../models/gridItem.dart';
