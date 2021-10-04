@@ -8,6 +8,7 @@ import 'package:study_app/services/lambdaCaller.dart';
 import 'package:study_app/matchingGame.dart';
 
 import 'package:study_app/teachingScreen.dart';
+import 'package:study_app/typingGame.dart';
 import 'dart:math';
 import 'models/gridItem.dart';
 
@@ -100,6 +101,10 @@ class GridLayout extends StatelessWidget {
               break;
               case "vocabMatch":{
                 Navigator.push(context, MaterialPageRoute(builder: (context) => MatchingGame(gridItems[i].title, gridItems[i].path)));
+              }
+              break;
+              case "typingGame":{
+                Navigator.push(context, MaterialPageRoute(builder: (context) => TypingGame(gridItems[i].title, gridItems[i].path)));
               }
               break;
               default:{

@@ -15,6 +15,11 @@
         "path": "flashcards.json"
     },
     {
+        "title": "Typing Practice",
+        "type": "typingGame",
+        "path": "flashcards.json"
+    },
+    {
         "title": "Markdown Example", 
         "type": "markdown",
         "path": "mdexample.md"
