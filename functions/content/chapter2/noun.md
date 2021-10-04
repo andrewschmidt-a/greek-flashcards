@@ -16,7 +16,7 @@ Every noun also will distinguish between singular and plural. This is very simil
 # Case
 Each noun also plays a different role in the sentance and this determines it's case. There are five main cases to learn
 
-## Nomitive 
+## Nominative 
 This case points us to the noun as the subject of the sentance. For example in the sentance, "The man was intelligent", the man would be the subject of the sentance.
 ## Genitive
 This case shows possession of a noun. For example, "ἄδελθός (brother) ἀνθρωπος (man) λεγει (speaks)", communicates that "a brother of a man speaks".
@@ -35,18 +35,18 @@ This final case is used when addressing someone as if in a letter. An example fr
 
 |                 | Singular     | Plural       |
 | --------------- | ------------ | ------------ |
-| **Nomitive**    | ἄγγελ**ος**  | ἄγγελ**οι**  |
+| **Nominative**    | ἄγγελ**ος**  | ἄγγελ**οι**  |
 | **Genitive**    | ἄγγελ**ου**  | ἄγγελ**ων**  |
 | **Dative**      | ἄγγελ**ῳ**   | ἄγγελ**οις** |
-| **Accusitive**  | ἄγγελ**ον**  | ἄγγελ**ους** |
+| **Accusative**  | ἄγγελ**ον**  | ἄγγελ**ους** |
 | **Vocative**    | ἄγγελ**ε**   | ἄγγελ**οι**  |
 
 ## Neuter
 
 |                 | Singular     | Plural       |
 | --------------- | ------------ | ------------ |
-| **Nomitive**    | τέκν**ον**   | τέκν**α**    |
+| **Nominative**  | τέκν**ον**   | τέκν**α**    |
 | **Genitive**    | τέκν**ου**   | τέκν**ων**   |
 | **Dative**      | τέκν**ῳ**    | τέκν**οις**  |
-| **Accusitive**  | τέκν**ον**   | τέκν**α**    |
+| **Accusative**  | τέκν**ον**   | τέκν**α**    |
 | **Vocative**    | τέκν**ον**   | τέκν**α**    |
