@@ -2,12 +2,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flip_card/flip_card.dart';
 import 'package:provider/provider.dart';
-import 'package:study_app/models/authObject.dart't.dart';
+import 'package:study_app/models/authObject.dart';
 import 'package:study_app/flashcard.dart';
 import 'package:study_app/services/lambdaCaller.dart';
 import 'package:study_app/matchingGame.dart';
 
-import 'package:study_app/teachingScreen.dart';import 'dart:math';
+import 'package:study_app/teachingScreen.dart';
+import 'dart:math';
 import 'models/gridItem.dart';
 
 
