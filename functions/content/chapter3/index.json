@@ -10,6 +10,16 @@
         "path": "nounFirstDec.md"
     },
     {
+        "title": "Lesson: Articles",
+        "type": "markdown",
+        "path": "artcle.md"
+    },
+    {
+        "title": "Lesson: Adjectives",
+        "type": "markdown",
+        "path": "adjective.md"
+    },
+    {
         "title": "Vocab Matching",
         "type": "vocabMatch",
         "path": "flashcards.json"
