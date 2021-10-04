@@ -1,0 +1,27 @@
+[
+    {
+        "title": "Flashcards",
+        "type": "flashcards",
+        "path": "flashcards.json"
+    },
+    {
+        "title": "Lesson: Prepositions",
+        "type": "markdown",
+        "path": "preposition.md"
+    },
+    {
+        "title": "Lesson: Negative",
+        "type": "markdown",
+        "path": "article.md"
+    },
+    {
+        "title": "Lesson: Present Infinitive",
+        "type": "markdown",
+        "path": "presentInfinitive.md"
+    },
+    {
+        "title": "Vocab Matching",
+        "type": "vocabMatch",
+        "path": "flashcards.json"
+    }
+]

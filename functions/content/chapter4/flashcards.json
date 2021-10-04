@@ -1,0 +1,268 @@
+[
+    {
+      "greek": "αγω",
+      "english": "I lead, bring, go",
+      "type": "verb",
+      "gender": "",
+      "pronunciation": "ágō"
+    },
+    {
+      "greek": "ακοη",
+      "english": "I lead, bring, go",
+      "type": "noun",
+      "gender": "feminine",
+      "pronunciation":"ak-o-ay'"
+    },
+    {
+      "greek": "αλλα",
+      "english": "but",
+      "type": "preposition",
+      "gender": "",
+      "pronunciation":"al'-los"
+    },
+    {
+      "greek": "αμαρτωλος",
+      "english": "sinner",
+      "type": "noun",
+      "gender": "masculine",
+      "pronunciation":"ham-ar-to-los'"
+    },
+    {
+      "greek": "αναγινωσκω",
+      "english": "I read",
+      "type": "verb",
+      "gender": "",
+      "pronunciation":""
+    },
+    {
+      "greek": "απαγγελω",
+      "english": "I announce, proclaim",
+      "type": "verb",
+      "gender": "",
+      "pronunciation":""
+    },
+    {
+      "greek": "απο (with gen.)",
+      "english": "from",
+      "type": "preposition",
+      "gender": "",
+      "pronunciation":""
+    },
+    {
+      "greek": "αποκρινομαι",
+      "english": "I answer",
+      "type": "verb",
+      "gender": "",
+      "pronunciation":""
+    },
+    {
+      "greek": "αποστελλω",
+      "english": "I send",
+      "type": "verb",
+      "gender": "",
+      "pronunciation":""
+    },
+    {
+      "greek": "αποστολος",
+      "english": "apostle",
+      "type": "noun",
+      "gender": "masculine",
+      "pronunciation":""
+    },
+    {
+      "greek": "γινομαι",
+      "english": "I become",
+      "type": "verb",
+      "gender": "",
+      "pronunciation":""
+    },
+    {
+      "greek": "δια (with gen.)",
+      "english": "through",
+      "type": "preposition",
+      "gender": "",
+      "pronunciation":""
+    },
+    {
+      "greek": "δια (with acc.)",
+      "english": "on account of, because",
+      "type": "preposition",
+      "gender": "",
+      "pronunciation":""
+    },
+    {
+      "greek": "διερχομαι",
+      "english": "διερχομαι",
+      "type": "verb",
+      "gender": "",
+      "pronunciation":""
+    },
+    {
+      "greek": "εις (with acc.)",
+      "english": "into, unto, against",
+      "type": "preposition",
+      "gender": "",
+      "pronunciation":""
+    },
+    {
+      "greek": "εισερχομαι",
+      "english": "I go out",
+      "type": "verb",
+      "gender": "",
+      "pronunciation":""
+    },
+    {
+      "greek": "ερχομαι",
+      "english": "I come, go",
+      "type": "verb",
+      "gender": "",
+      "pronunciation":""
+    },
+    {
+      "greek": "θαλασσα",
+      "english": "sea",
+      "type": "noun",
+      "gender": "feminine",
+      "pronunciation":""
+    },
+    {
+      "greek": "μενω",
+      "english": "I remain, continue, abide",
+      "type": "verb",
+      "gender": "",
+      "pronunciation":""
+    },
+    {
+      "greek": "μετα (with gen.)",
+      "english": "with",
+      "type": "preposition",
+      "gender": "",
+      "pronunciation":""
+    },
+    {
+      "greek": "μετα (with acc.)",
+      "english": "after",
+      "type": "preposition",
+      "gender": "",
+      "pronunciation":""
+    },
+    {
+      "greek": "οτι",
+      "english": "because, that",
+      "type": "preposition",
+      "gender": "",
+      "pronunciation":""
+    },
+    {
+      "greek": "ου, ουκ, ουχ",
+      "english": "not, no",
+      "type": "misc",
+      "gender": "",
+      "pronunciation":""
+    },
+    {
+      "greek": "ουρανος",
+      "english": "heaven",
+      "type": "noun",
+      "gender": "masculine",
+      "pronunciation":""
+    },
+    {
+      "greek": "πορευομαι",
+      "english": "I go",
+      "type": "verb",
+      "gender": "",
+      "pronunciation":""
+    },
+    {
+      "greek": "εκ (with gen.)",
+      "english": "out of",
+      "type": "verb",
+      "gender": "",
+      "pronunciation":""
+    },
+    {
+      "greek": "εκπορευομαι",
+      "english": "I go out",
+      "type": "verb",
+      "gender": "",
+      "pronunciation":""
+    },
+    {
+      "greek": "εν (with dat.)",
+      "english": "in, among",
+      "type": "preposition",
+      "gender": "",
+      "pronunciation":""
+    },
+    {
+      "greek": "εξερχομαι",
+      "english": "I come forth, go forth",
+      "type": "verb",
+      "gender": "",
+      "pronunciation":""
+    },
+    {
+      "greek": "προς (with acc.)",
+      "english": "to, towards",
+      "type": "preposition",
+      "gender": "",
+      "pronunciation":""
+    },
+    {
+      "greek": "προσφερω",
+      "english": "προσφερω",
+      "type": "verb",
+      "gender": "",
+      "pronunciation":""
+    },
+    {
+      "greek": "σωζω",
+      "english": "I save",
+      "type": "verb",
+      "gender": "",
+      "pronunciation":""
+    },
+    {
+      "greek": "υπερ (with gen.)",
+      "english": "on behalf of",
+      "type": "preposition",
+      "gender": "",
+      "pronunciation":""
+    },
+    {
+      "greek": "υπερ (with acc.)",
+      "english": "above, over, more than",
+      "type": "preposition",
+      "gender": "",
+      "pronunciation":""
+    },
+    {
+      "greek": "υπο (with gen.)",
+      "english": "by means of",
+      "type": "preposition",
+      "gender": "",
+      "pronunciation":""
+    },
+    {
+      "greek": "υπο (with acc.)",
+      "english": "under",
+      "type": "preposition",
+      "gender": "",
+      "pronunciation":""
+    },
+    {
+      "greek": "φερω",
+      "english": "I bring, carry",
+      "type": "verb",
+      "gender": "",
+      "pronunciation":""
+    },
+    {
+      "greek": "φωνη",
+      "english": "voice",
+      "type": "noun",
+      "gender": "feminine",
+      "pronunciation":""
+    }
+  ]
