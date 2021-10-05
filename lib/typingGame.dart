@@ -82,10 +82,6 @@ class _TypingGameState extends State<TypingGame> {
 
       setState(() {
         // Game Over
-        if (step == 1 && now - lastTypeAt > 4000) {
-          // timer.cancel();
-          // step++;
-        }
         if(step != 1){
           timer.cancel();
         }
