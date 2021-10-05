@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:marquee/marquee.dart';
+import 'package:study_app/services/lambdaCaller.dart';
 import 'dart:async';
+
+import 'models/vocab.dart';
 
 class TypingGame extends StatefulWidget {
   TypingGame(this.title, this.path);
@@ -12,6 +15,17 @@ class TypingGame extends StatefulWidget {
     return _TypingGameState(this.title, this.path);
   }
 }
+class TypingChar{
+  late String character;
+  late bool red;
+  late bool finished;
+
+  TypingChar(character){
+    this.character = character;
+    this.red = false;
+    this.finished = false;
+  }
+}
 
 
 class _TypingGameState extends State<TypingGame> {
@@ -20,12 +34,15 @@ class _TypingGameState extends State<TypingGame> {
 
   late String title;
   late String path;
-  int typedCharLength = 0;
-  String lorem = '                                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam hendrerit ullamcorper pulvinar. Nullam dolor eros, ultrices sed sapien ac, vestibulum tristique neque. Quisque commodo sollicitudin arcu. Vestibulum tempor, tortor ut tempor facilisis, justo augue feugiat sapien, sit amet mattis magna magna ut dui. Aliquam eu felis id felis vehicula porttitor vitae at sem. Vivamus interdum neque nisi, sed placerat ex egestas vel. Curabitur aliquet tincidunt vehicula. Morbi interdum placerat tortor, sed ullamcorper quam varius in.'
-    .toLowerCase()
-    .replaceAll(',','')
-    .replaceAll('.','');
-    var shownWidget;
+  late List<Vocab> vocabList;
+  late LambdaCaller lambdaCaller;
+  bool loaded = false;
+  get accuracy{
+    return (((this.lorem.length-this.lorem.where((element) => element.red).length) / this.lorem.length * 10000).floor()/100).toString() + '%';
+  }
+  List<TypingChar> lorem = [];
+  var shownWidget;
+  String text = "";
 
   int step = 0;
   int lastTypeAt = new DateTime.now().millisecondsSinceEpoch;
@@ -35,19 +52,22 @@ class _TypingGameState extends State<TypingGame> {
   }
   void onType(String value) {
     updateLastTypeAt();
-    String trimedValue = lorem.trimLeft();
+    int indexFirst = this.lorem.indexWhere((element) => element.finished == false);
     setState(() {
-      if(trimedValue.indexOf(value) != 0) {
-        step =2;
+      if(value.endsWith(lorem[indexFirst].character)) {
+        this.lorem[indexFirst].finished=true;
       } else {
-        typedCharLength = value.length;
+        this.lorem[indexFirst].red=true;
+        this.text = this.text.substring(0, this.text.length-1);
+        if(this.lorem.length-1 == indexFirst){
+          step++;
+        }
       }
      });    
   }
 
   void resetGame() {
     setState(() {
-      typedCharLength = 0;
       step = 0; 
     });
     
@@ -63,8 +83,8 @@ class _TypingGameState extends State<TypingGame> {
       setState(() {
         // Game Over
         if (step == 1 && now - lastTypeAt > 4000) {
-          timer.cancel();
-          step++;
+          // timer.cancel();
+          // step++;
         }
         if(step != 1){
           timer.cancel();
@@ -72,59 +92,71 @@ class _TypingGameState extends State<TypingGame> {
       });
     });
   }
+  loadVocab() async {
+    List<Vocab> vocab = await lambdaCaller.getFlashCardList(path); 
+    setState(() {
+      vocabList = vocab;
+      loaded = true;
+      this.vocabList.map((v) => v.greek).toList().forEach((element) {
+        lorem.addAll(element.runes.map((rune) => TypingChar(new String.fromCharCode(rune))));
+        lorem.add(TypingChar(" "));
+      });
+      lorem.removeLast();
+    });
+  }
   
 
   @override
   Widget build(BuildContext context) {
+    lambdaCaller = LambdaCaller(context);
+    if(this.loaded == false){
+      loadVocab();
+    }
+    var txt = TextEditingController(text: text);
+
     if(step == 0)
       shownWidget = <Widget>[
-        Text('Oyuna hosgeldin, coronadan kaçmaya hazır mısın'), 
+        Text('Are you ready to type in greek??'), 
         Container(
           padding: const EdgeInsets.only(top: 10),
           child: RaisedButton(
-            child: Text('Basla'),
+            child: Text('Yes'),
             onPressed: onStartClick,
           ),
         ),
       ];
     else if (step == 1)
      shownWidget = <Widget>[
-       Text('$typedCharLength'),
+       Text('$accuracy'),
             Container(
               margin: EdgeInsets.only(left: 0),
-              height: 40,
-              child:  Marquee(
-                text: lorem,
-                style: TextStyle(fontSize: 24, letterSpacing: 2),
-                scrollAxis: Axis.horizontal,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                blankSpace: 20.0,
-                velocity: 125,
-                startPadding: 0,
-                accelerationDuration: Duration(seconds: 20),
-                accelerationCurve: Curves.ease,
-                decelerationDuration: Duration(milliseconds: 500),
-                decelerationCurve: Curves.easeOut,
+              height: 72,
+              child:  RichText(
+                text: TextSpan(
+                  style: TextStyle(fontSize: 48),
+                  children: lorem.where((element) => !element.finished).map((t) => TextSpan(text: t.character, style: TextStyle(color: (t.red)?Colors.red:Colors.black))).toList(),
+                ),
               ), 
           ),
           Padding(
             padding: const EdgeInsets.only(left:16, right: 16, top: 32),
             child: TextField(
+              controller: txt,
               onChanged: onType,
               autofocus: true,
               decoration: InputDecoration(
                 border: OutlineInputBorder(),
-                labelText: 'Yaz Bakalım',
+                labelText: 'Type here',
               ),
             ),
           )
          ];
       else
         shownWidget = <Widget>[
-          Text('Coronadan kacamadım, skorun: $typedCharLength'), 
+          Text('Well done you got $accuracy correct.'), 
           RaisedButton(
             child: 
-            Text('Yeniden dene!'),
+            Text('Restart'),
             onPressed: resetGame,
             )
         ];
@@ -132,7 +164,7 @@ class _TypingGameState extends State<TypingGame> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Center(child: Text('Klavye Delikansı')),
+        title: Center(child: Text(this.title)),
       ),
       body: Center(
         child: Column(
