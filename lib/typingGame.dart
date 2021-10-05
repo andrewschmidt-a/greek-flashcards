@@ -60,7 +60,7 @@ class _TypingGameState extends State<TypingGame> {
         this.lorem[indexFirst].red=true;
         this.text = this.text.substring(0, this.text.length-1);
         if(this.lorem.where((element) => element.finished == false) == 0){
-          step++;
+          this.step++;
         }
       }
      });    
