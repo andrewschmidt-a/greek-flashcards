@@ -17,7 +17,7 @@
     {
         "title": "Typing Practice",
         "type": "typingGame",
-        "path": "test.json"
+        "path": "flashcards.json"
     },
     {
         "title": "Markdown Example", 

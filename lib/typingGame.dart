@@ -56,12 +56,11 @@ class _TypingGameState extends State<TypingGame> {
     setState(() {
       if(value.endsWith(lorem[indexFirst].character)) {
         this.lorem[indexFirst].finished=true;
-      } else {
-        this.lorem[indexFirst].red=true;
-        this.text = this.text.substring(0, this.text.length-1);
-        if(this.lorem.where((element) => element.finished == false) == 0){
+        if( this.lorem.where((element) => element.finished == false).length == 0){
           this.step++;
         }
+      } else {
+        this.lorem[indexFirst].red=true;
       }
      });    
   }
@@ -123,7 +122,7 @@ class _TypingGameState extends State<TypingGame> {
       ];
     else if (step == 1)
      shownWidget = <Widget>[
-       Text('$accuracy'),
+       Text('$accuracy $step'),
             Container(
               margin: EdgeInsets.only(left: 0),
               height: 72,
