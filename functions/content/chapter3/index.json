@@ -23,5 +23,10 @@
         "title": "Vocab Matching",
         "type": "vocabMatch",
         "path": "flashcards.json"
+    },
+    {
+        "title": "Typing Practice",
+        "type": "typingGame",
+        "path": "flashcards.json"
     }
 ]
