@@ -89,6 +89,7 @@ class _TypingGameState extends State<TypingGame> {
   }
   loadVocab() async {
     List<Vocab> vocab = await lambdaCaller.getFlashCardList(path); 
+    vocab.shuffle();
     setState(() {
       vocabList = vocab;
       loaded = true;
