@@ -42,6 +42,8 @@ dev_dependencies:
     sdk: flutter
 
 flutter:
+  assets:
+    - admin/index.html
 
   uses-material-design: true
 
