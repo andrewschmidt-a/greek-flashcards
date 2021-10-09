@@ -1,7 +1,7 @@
 [build]
     functions = "functions"
     publish = "build/web"
-    command = "npm i && if cd flutter; then git pull && cd ..; else git clone https://github.com/flutter/flutter.git; fi && flutter/bin/flutter config --enable-web && flutter/bin/flutter build web --no-sound-null-safety"
+    command = "npm i && if cd flutter; then git pull && cd ..; else git clone https://github.com/flutter/flutter.git; fi && flutter/bin/flutter config --enable-web && flutter/bin/flutter build web --no-sound-null-safety && mkdir build/web/admin && cp admin/index.html build/web/admin/"
 
 [dev]
     functions = "functions"
